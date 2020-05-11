@@ -2,8 +2,12 @@
   <div id="main">
     <navbar />
     <div id="page">
-      <Card />
-      coucou
+      <Card v-bind:object="{
+        title: 'Brand New Animal',
+        studio: 'Trigger',
+        distrib: 'wakanim',
+        descr: 'Super anime'
+      }" />
     </div>
   </div>
 </template>
@@ -24,7 +28,6 @@ export default {
 
 <style scoped lang="scss">
 #page{
-  //debug
-  background-color: blue;
+  //background-color: blue;
 }
 </style>
