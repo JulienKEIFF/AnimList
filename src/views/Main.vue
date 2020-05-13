@@ -27,7 +27,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#page{
-  //background-color: blue;
-}
+
 </style>
