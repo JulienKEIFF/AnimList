@@ -11,12 +11,20 @@
         <br>
         <label for="password">Mot de passe</label>
         <input type="password" name="password">
-
         <button>Connexion</button>
       </div>
       <div class="section">
         <h1>Pas encore de compte ?</h1>
         <h2>Creer un compte gratuitement</h2>
+        <label for="username">Utilisateur</label>
+        <input type="text" name="username">
+        <br>
+        <label for="password">Mot de passe</label>
+        <input type="password" name="password">
+        <br>
+        <label for="password2">Retaper le mot de passe</label>
+        <input type="password" name="password2">
+        <button>S'inscrire</button>
       </div>
     </div>
 
@@ -87,7 +95,7 @@ export default {
       display: inline-block;
       font-size: 18px;
       font-weight: bold;
-      width: 30%;
+      width: 40%;
       padding-left: 30px;
       margin-bottom: 30px;
       &:first-of-type{
@@ -97,7 +105,7 @@ export default {
     button{
       position: absolute;
       bottom: 10px;
-      left: 5px;
+      left: calc((100% - 200px) / 2);
       width: 200px;
       height: 50px;
       border: none;
