@@ -15,7 +15,7 @@
 
 <script>
 export default {
-  name: 'card',
+  name: 'card-anime',
   props: {
     object: {
       title: String,

@@ -85,7 +85,7 @@ export default {
       border-radius: 10px;
       background-color: rgb(233, 233, 233);
       border: 1px solid #00203FFF;
-      padding-right: 30px;
+      padding-right: 10px;
       padding-left: 10px;
       font-weight: bold;
       font-style: italic;

@@ -14,7 +14,7 @@
 
 <script>
 // @ is an alias to /src
-import Card from '@/components/card.vue'
+import Card from '@/components/card-anime.vue'
 import navbar from '@/components/nav.vue'
 
 export default {

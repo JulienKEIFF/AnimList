@@ -5,7 +5,6 @@ const mongo = require('../helpers/mongo')
 
 router.get('/', async function(req, res){
   const data = await mongo.db.collection('mangas').find().toArray()
-  console.log(data)
   res.json(data)
 })
 

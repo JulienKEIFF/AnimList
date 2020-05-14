@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 
 import Main from '../views/Main.vue'
 import Account from '../views/Account.vue'
+import Manga from '../views/Manga.vue'
 
 Vue.use(VueRouter)
 
@@ -16,6 +17,11 @@ Vue.use(VueRouter)
     path: '/user',
     name: 'Account',
     component: Account
+  },
+  {
+    path: '/mangas',
+    name: 'Manga',
+    component: Manga
   }
 ]
 
