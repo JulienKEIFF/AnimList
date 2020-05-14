@@ -24,6 +24,17 @@ router.post('/register', function(req, res) {
   })
 })
 
+router.post('/token', function(req, res) {
+  if(!req.body) res.status(400).send('Provide user in bodu request to get token')
+  getToken(req.body.username)
+  .then(token => res.send(token))
+  .catch(err =>{
+    console.error(err)
+    if(err.code) res.status(err.code).send(err.message)
+    else res.status(500).send({status: 'error', message: 'A problem was occured when getting token'})
+  })
+})
+
 async function register(user) {
   const userExist = await mongo.db.collection('user').findOne({name: user.username})
   const password = user.password
@@ -49,7 +60,6 @@ async function register(user) {
 
 async function login(user) {
  const userDb = await mongo.db.collection('user').findOne({username: user.username})
- console.log(user)
  if(!userDb) {
    const error = new Error('User does not exist')
    error.code = 404
@@ -76,5 +86,16 @@ function generateToken(length) {
   }
   return { token } = tokenArray.join("");
 }
+
+async function getToken(username){
+  const user = await mongo.db.collection('user').findOne({username: username})
+  if(user) return user.token
+  else{
+    const error = new Error('User does not exist')
+    error.code = 404
+    throw error
+  }
+}
+
 
 module.exports = router;
