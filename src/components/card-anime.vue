@@ -1,15 +1,17 @@
 <template>
-  <div class="card-main">
-    <h1>Titre de la card ({{object.title}})</h1>
-    <h2>Studio({{object.studio}}) </h2>
-    <h2 v-if="object.distrib !== 'none'" class="twice">- Distributeur({{object.distrib}})</h2>
+  <div class="card-main" :class="more ? 'full-card' :''">
+    <h1>{{object.title}}</h1>
+    <h2>{{object.studio}}</h2>
+    <h2 v-if="object.distrib !== 'none'" class="twice">- {{object.distrib}}</h2>
+    <h2>- {{object.ep}} épisodes</h2>
     <br>
-    <p>Description de la card({{object.descr}})</p>
+    <p :class="more ? 'full' : 'minus'">{{object.descr}}</p>
     <img v-if="object.distrib === 'crunchyroll'" src="../assets/crunchyroll.png" alt="crunchyroll-logo">
     <img v-if="object.distrib === 'netflix'" src="../assets/netflix.png" alt="netflix-logo">
     <img v-if="object.distrib === 'wakanim'" src="../assets/wakanim.png" alt="wakanim-logo">
     <img v-if="object.distrib === 'prime'" src="../assets/prime.png" alt="prime-video-logo">
     <img v-if="object.distrib === 'none'" src="">
+    <div v-if="readmore" class="readmore" v-on:click="more = !more">Lire {{more ? 'moins' : 'plus'}}</div>
   </div>
 </template>
 
@@ -21,12 +23,14 @@ export default {
       title: String,
       studio: String,
       distrib: String,
-      descr: String
+      descr: String,
+      ep: Number
     }
   },
   data: function() {
     return{
-      
+      readmore: true,
+      more: false,
     }
   },
   mounted: function () {
@@ -41,18 +45,19 @@ export default {
 <style scoped lang="scss">
 .card-main{
   position: relative;
-  height: 150px;
+  margin-top: 40px;
+  height: 180px;
   overflow: hidden;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: rgb(231, 231, 231);
   padding-top: 10px;
   h1{
-    padding-left: 10px;
+    padding-left: 7px;
     text-transform: uppercase;
   }
   h2{
-    padding-left: 20px;
+    padding-left: 7px;
     float: left;
   }
   .twice{
@@ -60,8 +65,16 @@ export default {
   }
   p{
     float: none;
-    margin: 20px 0 0 10px;
+    height: 55px;
+    margin: 20px 20px 0 10px;
     text-indent: 10px;
+    text-align: justify;
+    justify-content: auto;
+    overflow: hidden;
+    white-space: pre-line;
+  }
+  .full{
+    height: 100%;
   }
   img{
     position: absolute;
@@ -69,5 +82,16 @@ export default {
     right: 30px;
     height: 50px;
   }
+  .readmore{
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+    color: #00203FFF;
+    cursor: pointer;
+  }
+}
+.full-card{
+  height: 100%;
+  padding-bottom: 20px;
 }
 </style>

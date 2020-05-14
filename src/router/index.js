@@ -4,6 +4,7 @@ import VueRouter from 'vue-router'
 import Main from '../views/Main.vue'
 import Account from '../views/Account.vue'
 import Manga from '../views/Manga.vue'
+import Anime from '../views/Anime.vue'
 
 Vue.use(VueRouter)
 
@@ -22,6 +23,11 @@ Vue.use(VueRouter)
     path: '/mangas',
     name: 'Manga',
     component: Manga
+  },
+  {
+    path: '/animes',
+    name: 'Anime',
+    component: Anime
   }
 ]
 
