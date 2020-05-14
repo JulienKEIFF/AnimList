@@ -4,7 +4,7 @@
       <router-link tag="li" class="title" to="/">Animlist</router-link>
       <router-link tag="li" to="/mangas"><i class="fas fa-book"></i>Mangas</router-link>
       <router-link tag="li" to="/animes"><i class="fas fa-tv"></i>Animes</router-link>
-      <router-link tag="li" to="/login"><i class="fas fa-user"></i>Mon Compte</router-link>
+      <router-link tag="li" :to="path"><i class="fas fa-user"></i>Mon Compte</router-link>
       <div id="search">
         <input type="text" name="search" placeholder="Rechercher un manga, un anime">
         <i class="fas fa-search search-icon"></i>
@@ -14,8 +14,24 @@
 </template>
 
 <script>
+import { DexieServices } from '../services/dexie'
 export default {
   name: 'navbar',
+  data: function(){
+    return{
+      path: ''
+    }
+  },
+  mounted: async function(){
+    await this.getToken()
+  },
+  methods: {
+    getToken: async function(){
+      const token = await DexieServices.getToken()
+      if(token) this.path = '/user/'+token.username
+      if(!token) this.path = '/login'
+    }
+  }
 }
 </script>
 
