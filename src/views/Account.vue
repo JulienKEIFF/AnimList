@@ -1,19 +1,24 @@
 <template>
   <div id="main">
     <navbar />
-    Logged {{username}}
+    <sidebar />
+    <div id="page">
+      Logged {{username}}
+    </div>
   </div>
 </template>
 
 <script>
 import navbar from '@/components/nav.vue'
+import sidebar from'@/components/account-nav.vue'
 import {AxiosServices} from '../services/axios'
 import {DexieServices} from '../services/dexie'
 
 export default {
   name: 'Account',
   components: {
-    navbar
+    navbar,
+    sidebar
   },
   data: function() {
     return {
@@ -33,5 +38,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+#page{
+  margin-left: 80px;
+}
 </style>

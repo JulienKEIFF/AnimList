@@ -66,6 +66,8 @@ export default {
       this.message = tokenGet.data
       if(tokenGet.data) {
         await DexieServices.addToken(tokenGet.data, this.usernameReg)
+        const path ='/user/'+this.usernameReg
+        this.$router.push({path: path})
       }
     },
     login: async function(){

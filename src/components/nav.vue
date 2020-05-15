@@ -5,6 +5,7 @@
       <router-link tag="li" to="/mangas"><i class="fas fa-book"></i>Mangas</router-link>
       <router-link tag="li" to="/animes"><i class="fas fa-tv"></i>Animes</router-link>
       <router-link tag="li" :to="path"><i class="fas fa-user"></i>Mon Compte</router-link>
+      <li v-if="connected" v-on:click="logout()"><i class="fas fa-sign-out-alt"></i></li>
       <div id="search">
         <input type="text" name="search" placeholder="Rechercher un manga, un anime">
         <i class="fas fa-search search-icon"></i>
@@ -15,21 +16,37 @@
 
 <script>
 import { DexieServices } from '../services/dexie'
+import { AxiosServices } from '../services/axios'
+
 export default {
   name: 'navbar',
   data: function(){
     return{
-      path: ''
+      path: '',
+      connected: false
     }
   },
   mounted: async function(){
     await this.getToken()
+    this.connected = await this.isConnected()
   },
   methods: {
     getToken: async function(){
       const token = await DexieServices.getToken()
       if(token) this.path = '/user/'+token.username
       if(!token) this.path = '/login'
+    },
+    isConnected: async function(){
+      if(await DexieServices.getToken() === undefined) return false
+      const localToken = await DexieServices.getToken()
+      let servToken
+      if(localToken) servToken = await AxiosServices.instance.post('/user/token', {username: localToken.username})
+      if(localToken.token === servToken.data) return true
+      else return false
+    },
+    logout: async function(){
+      await DexieServices.logout()
+      this.$router.go()
     }
   }
 }
@@ -38,6 +55,7 @@ export default {
 <style scoped lang="scss">
 #nav-bar{
   position: fixed;
+  user-select: none;
   top: 0;
   height: 60px;
   width: 100%;
