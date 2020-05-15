@@ -58,7 +58,10 @@ async function isConnected(){
   let servToken
   if(localToken) servToken = await AxiosServices.instance.post('/user/token', {username: localToken.username})
   if(localToken.token === servToken.data) return true
-  else return false
+  else {
+    DexieServices.logout()
+    return false
+  }
 }
 
 export default router
