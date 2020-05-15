@@ -2,7 +2,6 @@
   <div id="main">
     <navbar />
     <div id="page">
-      manga
       <div class="item" v-for="item in mangas" :key="item.title">
         <Card v-bind:object="{
           title: item.title,
