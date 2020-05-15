@@ -41,7 +41,7 @@ export default {
       const localToken = await DexieServices.getToken()
       let servToken
       if(localToken) servToken = await AxiosServices.instance.post('/user/token', {username: localToken.username})
-      if(localToken.token === servToken.data) return true
+      if(localToken.token === servToken.data.token) return true
       else return false
     },
     logout: async function(){

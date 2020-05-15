@@ -29,7 +29,8 @@ Vue.use(VueRouter)
     component: Account,
     props: true,
     beforeEnter: async(to, from, next) =>{
-      const connected = await isConnected()
+      console.log(to.params.user)
+      const connected = await isConnected(to.params.user)
     if(connected) next(vm =>{/* access granted */})
     if(!connected) next('/login')
     }
@@ -52,12 +53,12 @@ const router = new VueRouter({
   routes
 })
 
-async function isConnected(){
+async function isConnected(params){
   if(await DexieServices.getToken() === undefined) return false
   const localToken = await DexieServices.getToken()
   let servToken
   if(localToken) servToken = await AxiosServices.instance.post('/user/token', {username: localToken.username})
-  if(localToken.token === servToken.data) return true
+  if(localToken.token === servToken.data.token && params === servToken.data.username) return true
   else {
     DexieServices.logout()
     return false

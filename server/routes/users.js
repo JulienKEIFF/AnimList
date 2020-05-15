@@ -89,7 +89,7 @@ function generateToken(length) {
 
 async function getToken(username){
   const user = await mongo.db.collection('user').findOne({username: username})
-  if(user) return user.token
+  if(user) return user
   else{
     const error = new Error('User does not exist')
     error.code = 404
