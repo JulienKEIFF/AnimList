@@ -5,6 +5,7 @@ COPY package.json .
 COPY package-lock.json .
 RUN npm ci
 COPY ./server .
+RUN npm ci
 
 FROM alpine:3.11
 RUN apk --no-cache add nodejs
