@@ -7,7 +7,8 @@ RUN npm ci
 
 COPY . .
 RUN npm run build
-RUN cd server && npm ci
+RUN cd server
+RUN npm ci
 
 FROM alpine:3.11
 RUN apk --no-cache add nodejs
