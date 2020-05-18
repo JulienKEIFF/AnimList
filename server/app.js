@@ -9,7 +9,7 @@ var usersRouter = require('./routes/users');
 
 var app = express();
 app.use(cors({
-  origin: "*"
+  'Access-Control-Allow-Origin': "*"
 }))
 
 // view engine setup
