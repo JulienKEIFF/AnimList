@@ -4,11 +4,13 @@ WORKDIR /animlist
 COPY package.json .
 COPY package-lock.json .
 RUN npm ci
-COPY ./server .
-RUN npm ci
+
+COPY . .
+RUN npm run build
+RUN cd server && npm ci
 
 FROM alpine:3.11
 RUN apk --no-cache add nodejs
 WORKDIR /animlist
-COPY --from=Builder /animlist .
+COPY --from=Builder /animlist/server .
 CMD ["node", "bin/www"]
