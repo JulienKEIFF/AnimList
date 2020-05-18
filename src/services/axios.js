@@ -3,11 +3,10 @@ import Axios from 'axios'
 class AxiosService {
   constructor() {
   }
-  baseURL = 'http://localhost:3000/api/v1'
+  baseURL = process.env.VUE_APP_SERVER_URL || 'http://localhost:3000/api/v1'
   instance = Axios.create({
-    baseURL: 'http://localhost:3000/api/v1'
+    baseURL: this.baseURL
   })
-
 }
 
 
