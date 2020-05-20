@@ -3,9 +3,9 @@ RUN apk --no-cache add gcc g++ make python nodejs npm
 WORKDIR /animlist
 COPY package.json .
 COPY package-lock.json .
+COPY . .
 RUN npm ci
 
-COPY . .
 RUN npm run build
 RUN cd server
 RUN npm ci
