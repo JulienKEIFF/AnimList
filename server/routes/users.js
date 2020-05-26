@@ -25,7 +25,7 @@ router.post('/register', function(req, res) {
 })
 
 router.post('/token', function(req, res) {
-  if(!req.body) res.status(400).send('Provide user in bodu request to get token')
+  if(!req.body) res.status(400).send('Provide user in body request to get token')
   getToken(req.body.username)
   .then(token => res.send(token))
   .catch(err =>{
@@ -33,6 +33,13 @@ router.post('/token', function(req, res) {
     if(err.code) res.status(err.code).send(err.message)
     else res.status(500).send({status: 'error', message: 'A problem was occured when getting token'})
   })
+})
+
+router.post('/token/isadmin', function(req, res) {
+  if(!req.body) res.status(400).send('Provide user in body request')
+  isAdmin(req.body.username)
+  .then(state => res.send({isadmin: true}))
+  .catch(err => res.send({isadmin: false}))
 })
 
 async function register(user) {
@@ -57,7 +64,6 @@ async function register(user) {
     throw error
   }
 }
-
 async function login(user) {
  const userDb = await mongo.db.collection('user').findOne({username: user.username})
  if(!userDb) {
@@ -76,7 +82,6 @@ async function login(user) {
  await mongo.db.collection('user').updateOne({username: user.username}, {$set: {token: token}})
  return token
 }
-
 function generateToken(length) {
   const symbolAuth = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890".split("");
   const tokenArray = [];
@@ -86,7 +91,6 @@ function generateToken(length) {
   }
   return { token } = tokenArray.join("");
 }
-
 async function getToken(username){
   const user = await mongo.db.collection('user').findOne({username: username})
   if(user) return user
@@ -96,6 +100,14 @@ async function getToken(username){
     throw error
   }
 }
-
+async function isAdmin(username){
+  const user = await mongo.db.collection('user').findOne({username: username})
+  if(user.isadmin) return user.isadmin
+  else{
+    const error = new Error('User does not exist')
+    error.code = 404
+    throw error
+  }
+}
 
 module.exports = router;

@@ -36,7 +36,6 @@ export default {
   mounted: async function() {
     const getAnimes = await AxiosServices.instance.get('/anime')
     this.animes = getAnimes.data
-    console.log(this.animes)
   },
   methods: {
 

@@ -36,7 +36,6 @@ export default {
   mounted: async function() {
     const getMangas = await AxiosServices.instance.get('/manga')
     this.mangas = getMangas.data
-    console.log(this.mangas)
   },
   methods: {
 
