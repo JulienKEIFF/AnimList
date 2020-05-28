@@ -13,6 +13,9 @@ router.post('/search', async function (req, res) {
 })
 
 router.post('/add', async function (req, res) {
+  if(req.body){
+    await mongo.db.collection('animes').insertOne(req.body).then(res => console.log(res))
+  }
   res.json({ message: 'Add' })
 })
 

@@ -40,19 +40,21 @@ export default {
 
 <style scoped lang="scss">
 .card-main{
+  z-index: 1;
   position: relative;
-  height: 150px;
+  margin-top: 40px;
+  height: 180px;
   overflow: hidden;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
   background-color: rgb(231, 231, 231);
   padding-top: 10px;
   h1{
-    padding-left: 10px;
+    padding-left: 7px;
     text-transform: uppercase;
   }
   h2{
-    padding-left: 20px;
+    padding-left: 7px;
     float: left;
   }
   .twice{
@@ -60,8 +62,16 @@ export default {
   }
   p{
     float: none;
-    margin: 20px 0 0 10px;
+    height: 55px;
+    margin: 20px 20px 0 10px;
     text-indent: 10px;
+    text-align: justify;
+    justify-content: auto;
+    overflow: hidden;
+    white-space: pre-line;
+  }
+  .full{
+    height: 100%;
   }
   img{
     position: absolute;
@@ -69,5 +79,16 @@ export default {
     right: 30px;
     height: 50px;
   }
+  .readmore{
+    position: absolute;
+    right: 20px;
+    bottom: 5px;
+    color: #00203FFF;
+    cursor: pointer;
+  }
+}
+.full-card{
+  height: 100%;
+  padding-bottom: 20px;
 }
 </style>

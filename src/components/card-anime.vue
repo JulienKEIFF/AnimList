@@ -44,6 +44,7 @@ export default {
 
 <style scoped lang="scss">
 .card-main{
+  z-index: 1;
   position: relative;
   margin-top: 40px;
   height: 180px;

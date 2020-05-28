@@ -54,6 +54,7 @@ export default {
 
 <style scoped lang="scss">
 #nav-bar{
+  z-index: 10;
   position: fixed;
   user-select: none;
   top: 0;
