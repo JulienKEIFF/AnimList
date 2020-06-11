@@ -5,7 +5,7 @@
     <div id="page">
       Bienvenue {{username}} !!!
       <p>Retrouver bientot ici vos anime et manga favoris !! </p>
-      <admin v-if="isAdmin = true" />
+      <admin v-if="isAdmin" />
     </div>
   </div>
 </template>

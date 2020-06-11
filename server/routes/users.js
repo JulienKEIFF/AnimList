@@ -102,6 +102,7 @@ async function getToken(username){
 }
 async function isAdmin(username){
   const user = await mongo.db.collection('user').findOne({username: username})
+  console.log(user.isadmin)
   if(user.isadmin) return user.isadmin
   else{
     const error = new Error('User does not exist')
