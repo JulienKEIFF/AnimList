@@ -2,12 +2,7 @@
   <div id="main">
     <navbar />
     <div id="page">
-      <Card v-bind:object="{
-        title: 'Brand New Animal',
-        studio: 'Trigger',
-        distrib: 'wakanim',
-        descr: 'Super anime'
-      }" />
+      
     </div>
   </div>
 </template>
