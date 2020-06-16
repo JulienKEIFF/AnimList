@@ -34,14 +34,11 @@ export default {
 #side-bar{
   z-index: 10;
   height: 100vh;
-  top: 60px;
   background-color: #00203FFF;
   position: fixed;
   overflow: hidden;
   .icon{
     position: relative;
-    top: 30px;
-    width: 50px;
     li{
       user-select: none;
       list-style: none;
@@ -79,12 +76,59 @@ export default {
     }
   }
 }
-#side-bar.open{
-  width: 20vw;
-  transition-duration: 0.5s;
+
+
+@media screen and (min-width: 1180px){
+  #side-bar{
+      top: 60px;
+    .icon{
+      top: 30px;
+      width: 50px;
+    }
+  }
+  #side-bar.open{
+    width: 40vw;
+    transition-duration: 0.5s;
+  }
+  #side-bar.close{
+    width: 70px;
+    transition-duration: 0.5s;
+  }
 }
-#side-bar.close{
-  width: 70px;
-  transition-duration: 0.5s;
+
+@media screen and (min-width: 650px) and (max-width: 1180px){
+  #side-bar{
+    top: 40px;
+    .icon{
+      top: 30px;
+      font-size: 200px;
+    }
+  }
+   #side-bar.open{
+    width: 40vw;
+    transition-duration: 0.5s;
+  }
+  #side-bar.close{
+    width: 70px;
+    transition-duration: 0.5s;
+  }
+}
+
+@media screen and (max-width: 850px){
+  #side-bar{
+    top: 40px;
+    .icon{
+      top: 30px;
+      width: 50px;
+    }
+  }
+   #side-bar.open{
+    width: 100vw;
+    transition-duration: 0.5s;
+  }
+  #side-bar.close{
+    width: 70px;
+    transition-duration: 0.5s;
+  }
 }
 </style>

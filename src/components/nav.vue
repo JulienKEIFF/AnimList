@@ -58,7 +58,6 @@ export default {
   position: fixed;
   user-select: none;
   top: 0;
-  height: 60px;
   width: 100%;
   background-color: #00203FFF;
   padding-left: 30px;
@@ -70,13 +69,11 @@ export default {
     li{
       color: white;
       display: flex;
-      padding: 20px 5px;
       margin: 0 10px;
       height: 100%;
       list-style: none;
       text-transform: uppercase;
       font-weight: bolder;
-      font-size: 20px;
       cursor: pointer;
       transition-duration: 0.05s;
       &:hover{
@@ -86,7 +83,6 @@ export default {
       }
     }
     .title{
-      font-size: 40px;
       padding-top: 7px;
       margin-right: 30px;
       &:hover{
@@ -98,27 +94,149 @@ export default {
       margin-right: 7px;
     }
   }
-  #search{
-    position: absolute;
-    right: 10px;
-    height: 100%;
-    display: flex;
-    padding: 15px 0;
-    input{
-      width: 30vw;
-      border-radius: 10px;
-      background-color: rgb(233, 233, 233);
-      border: 1px solid #00203FFF;
-      padding-right: 30px;
-      padding-left: 10px;
-      font-weight: bold;
-      font-style: italic;
-      color: #727272;
+} 
+@media screen and (min-width: 1180px) {
+  #nav-bar{
+    height: 60px;
+    ul{
+      li{
+        padding: 20px 5px;
+        font-size: 20px;
+      }
+      .title{
+      font-size: 40px;
+      }
+      #search{
+        position: absolute;
+        right: 10px;
+        height: 100%;
+        display: flex;
+        padding: 15px 0;
+        input{
+          width: 30vw;
+          border-radius: 10px;
+          background-color: rgb(233, 233, 233);
+          border: 1px solid #00203FFF;
+          padding-right: 30px;
+          padding-left: 10px;
+          font-weight: bold;
+          font-style: italic;
+          color: #727272;
+        }
+        .search-icon{
+          position: relative;
+          top: 7px;
+          left: -25px;
+        }
+      }
     }
-    .search-icon{
-      position: relative;
-      top: 7px;
-      left: -25px;
+  }
+}
+@media screen and (min-width: 850px) and (max-width: 1180px) {
+  #nav-bar{
+    height: 45px;
+    ul{
+      li{
+        padding: 10px 3px; 
+        font-size: 20px;
+      }
+      .title{
+      font-size: 30px;
+      }
+      #search{
+        position: absolute;
+        right: 10px;
+        height: 100%;
+        display: flex;
+        padding: 15px 0;
+        input{
+          width: 4vw;
+          z-index: 5;
+          opacity: 0;
+          transition-duration: 0.5s;
+          margin-top: -5px;
+          border-radius: 10px;
+          height: 150%;
+          background-color: rgb(233, 233, 233);
+          border: 1px solid #00203FFF;
+          padding-right: 0px;
+          padding-left: 0px;
+          font-weight: bold;
+          font-style: italic;
+          color: #727272;
+          cursor: pointer;
+          &:focus{
+            width: 40vw;
+            transition-duration: 0.5s;
+            opacity: 1;
+            margin-top: 40px;
+            padding-right: 30px;
+            padding-left: 10px;
+            cursor: text;
+          }
+        }
+        .search-icon{
+          position: relative;
+          top: -3px;
+          left: -25px;
+          color: white;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+  #nav-bar{
+    height: 40px;
+    ul{
+      li{
+        padding: 15px 3px;
+        margin: 0 3px;
+        font-size: 15px;
+      }
+      .title{
+      font-size: 30px;
+      }
+      #search{
+        position: absolute;
+        right: 10px;
+        height: 100%;
+        display: flex;
+        padding: 15px 0;
+        input{
+          width: 4vw;
+          z-index: 5;
+          opacity: 0;
+          transition-duration: 0.5s;
+          margin-top: -5px;
+          border-radius: 10px;
+          height: 150%;
+          background-color: rgb(233, 233, 233);
+          border: 1px solid #00203FFF;
+          padding-right: 0px;
+          padding-left: 0px;
+          font-weight: bold;
+          font-style: italic;
+          color: #727272;
+          cursor: pointer;
+          &:focus{
+            width: 40vw;
+            transition-duration: 0.5s;
+            opacity: 1;
+            margin-top: 40px;
+            padding-right: 30px;
+            padding-left: 10px;
+            cursor: text;
+          }
+        }
+        .search-icon{
+          position: relative;
+          top: 0px;
+          left: -25px;
+          color: white;
+          font-size: 15px;
+        }
+      }
     }
   }
 }
