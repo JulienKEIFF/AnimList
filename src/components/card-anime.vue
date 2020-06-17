@@ -66,7 +66,6 @@ export default {
   }
   p{
     float: none;
-    height: 55px;
     margin: 20px 20px 0 10px;
     text-indent: 10px;
     text-align: justify;
@@ -79,9 +78,7 @@ export default {
   }
   img{
     position: absolute;
-    top: 10px;
     right: 30px;
-    height: 50px;
   }
   .readmore{
     position: absolute;
@@ -94,5 +91,57 @@ export default {
 .full-card{
   height: 100%;
   padding-bottom: 20px;
+}
+@media screen and (min-width: 800px) {
+  .card-main{
+    height: 180px;
+  }
+  h1{
+    font-size: 30px;
+  }
+  h2{
+    font-size: 20px;
+  }
+  p{
+    height: 55px;
+    font-size: 16px;
+  }
+  .full{
+    height: 100%;
+  }
+  img{
+    top: 10px;
+    height: 50px;
+  }
+  .full-card{
+  height: 100%;
+  padding-bottom: 20px;
+  }
+}
+@media screen and (min-width: 400px) and (max-width: 800px) {
+  .card-main{
+    height: 160px;
+  }
+  h1{
+    font-size: 20px;
+  }
+  h2{
+    font-size: 15px;
+  }
+  p{
+    height: 51px;
+    font-size: 15px;
+  }
+  .full{
+    height: 100%;
+  }
+  img{
+    top: 15px;;
+    height: 35px;
+  }
+  .full-card{
+  height: 100%;
+  padding-bottom: 20px;
+  }
 }
 </style>

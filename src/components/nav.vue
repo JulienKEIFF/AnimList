@@ -185,7 +185,7 @@ export default {
     }
   }
 }
-@media screen and (max-width: 850px) {
+@media screen and (min-width: 800px) and (max-width: 850px) {
   #nav-bar{
     height: 40px;
     ul{
@@ -224,6 +224,70 @@ export default {
             transition-duration: 0.5s;
             opacity: 1;
             margin-top: 40px;
+            padding-right: 30px;
+            padding-left: 10px;
+            cursor: text;
+          }
+        }
+        .search-icon{
+          position: relative;
+          top: 0px;
+          left: -25px;
+          color: white;
+          font-size: 15px;
+        }
+      }
+    }
+  }
+}
+@media screen and (max-width: 800px) {
+  #nav-bar{
+    height: 40px;
+    ul{
+      .title{
+        visibility: hidden;
+        width: 0;
+        margin: 0;
+      }
+      li{
+        padding: 15px 3px;
+        margin: 0 3px;
+        font-size: 15px;
+        &:first-of-type{
+          margin-left: -35px;
+        }
+      }
+      .title{
+      font-size: 30px;
+      }
+      #search{
+        position: absolute;
+        right: -10px;
+        height: 100%;
+        display: flex;
+        padding: 15px 0;
+        input{
+          width: 4vw;
+          z-index: 5;
+          opacity: 0;
+          transition-duration: 0.5s;
+          margin-top: -5px;
+          border-radius: 10px;
+          height: 150%;
+          background-color: rgb(233, 233, 233);
+          border: 1px solid #00203FFF;
+          padding-right: 0px;
+          padding-left: 0px;
+          font-weight: bold;
+          font-style: italic;
+          color: #727272;
+          cursor: pointer;
+          &:focus{
+            width: 60vw;
+            transition-duration: 0.5s;
+            opacity: 1;
+            height: 175%;;
+            margin-top: 30px;
             padding-right: 30px;
             padding-left: 10px;
             cursor: text;
