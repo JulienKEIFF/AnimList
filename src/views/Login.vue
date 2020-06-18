@@ -92,8 +92,6 @@ export default {
   background-color: rgb(173, 173, 173);
   width: 90vw;
   margin: 0 auto;
-  margin-top: 150px;
-  display: flex;
   background-color: rgb(231, 231, 231);
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
@@ -101,11 +99,8 @@ export default {
   box-shadow: 5px 5px 5px rgb(173, 173, 173);
   .section{
     position: relative;
-    width: 50%;
-    height: 50vh;
     h1{
       margin-top: 20px;
-      font-size: 40px;
       padding-left: 15px;
       text-transform: uppercase;
     }
@@ -116,7 +111,6 @@ export default {
       font-weight: normal;
     }
     input{
-      width: 50%;
       height: 25px;
       border-radius: 10px;
       background-color: rgb(233, 233, 233);
@@ -139,23 +133,103 @@ export default {
       }
     }
     button{
-      position: absolute;
-      bottom: 10px;
-      left: calc((100% - 200px) / 2);
-      width: 200px;
-      height: 50px;
       border: none;
       background-color: rgb(90, 216, 159);
       color: #00203FFF;
       text-transform: uppercase;
-      font-size: 20px;
       font-weight: bold;
-      border-radius: 15px;
       cursor: pointer;
     }
-    &:first-of-type{
-      border-right: solid 1px black;
+  }
+}
+@media screen and (min-width: 1180px) {
+  #login{
+    display: flex;
+    margin-top: 150px;
+    .section{
+      width: 50%;
+      height: 55vh;
+      background-color: red;
+      &:first-of-type{
+        border-right: solid 1px black;
+      }
     }
+    h1{
+      font-size: 40px;
+    }
+    input{
+      width: 50%;
+    }
+    button{
+      position: absolute;
+      bottom: 10px;
+      width: 200px;
+      height: 50px;
+      font-size: 20px;
+      border-radius: 15px;
+    }
+  }
+}
+@media screen and (min-width: 850px) and (max-width: 1180px) {
+ #login{
+    display: block;
+    margin-top: -20px;
+    width: 90vw;
+    overflow: hidden;
+    .section{
+      width: 100vw;
+      height: 100%;
+      padding-bottom: 30px;
+      &:last-of-type{
+        margin-top: 30px;
+      }
+    }
+    h1{
+      font-size: 25px;
+    }
+    input{
+      width: 40%;
+    }
+    button{
+      position: absolute;
+      bottom: 10px;
+      width: 100px;
+      height: 30px;
+      font-size: 13px;
+      border-radius: 7px;
+      left: 30px;
+    }
+  }
+}
+@media screen and (max-width: 850px) {
+  #login{
+    display: block;
+    margin-top: -20px;
+    width: 90vw;
+    overflow: hidden;
+    .section{
+      width: 100vw;
+      height: 100%;
+      padding-bottom: 30px;
+      &:last-of-type{
+        margin-top: 30px;
+      }
+    }
+  }
+  h1{
+    font-size: 25px;
+  }
+  input{
+    width: 40%;
+  }
+  button{
+    position: absolute;
+    bottom: 10px;
+    left: 30px;
+    width: 100px;
+    height: 30px;
+    font-size: 13px;
+    border-radius: 7px;
   }
 }
 </style>
