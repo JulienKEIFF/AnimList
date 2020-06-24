@@ -149,7 +149,6 @@ export default {
     .section{
       width: 50%;
       height: 55vh;
-      background-color: red;
       &:first-of-type{
         border-right: solid 1px black;
       }
@@ -162,6 +161,7 @@ export default {
     }
     button{
       position: absolute;
+      left: 10px;
       bottom: 10px;
       width: 200px;
       height: 50px;
