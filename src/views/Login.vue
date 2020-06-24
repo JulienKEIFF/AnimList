@@ -27,7 +27,7 @@
         <button v-on:click="register()">S'inscrire</button>
       </div>
     </div>
-    <div v-if="showMessage">
+    <div v-if="showMessage" id="message">
       {{message}}
     </div>
   </div>
@@ -59,9 +59,21 @@ export default {
     register: async function(){
       this.showMessage = false
       let tokenGet
-      if(this.usernameReg === '' && this.passwordReg === '' && this.password2Reg === '') this.message = 'Veuillez rentrer vos informations', this.showMessage = true
-      if(this.usernameReg !== '' && this.passwordReg === '' && this.password2Reg === '') this.message = 'Veuillez rentrer votre mot de passe', this.showMessage = true
-      if(this.passwordReg !== this.password2Reg) this.message = "Le mot de passe n'est pas identique", this.showMessage = true
+      if(this.usernameReg == '' && this.passwordReg == '' && this.password2Reg == ''){
+        this.message = 'Veuillez rentrer vos informations'
+        this.showMessage = true
+        return
+      } 
+      if(this.usernameReg !== '' && this.passwordReg === '' && this.password2Reg === ''){
+        this.message = 'Veuillez rentrer votre mot de passe'
+        this.showMessage = true
+        return
+      }
+      if(this.passwordReg !== this.password2Reg){
+        this.message = "Le mot de passe n'est pas identique"
+        this.showMessage = true
+        return
+      }
       else tokenGet = await AxiosServices.instance.post('/user/register', {username: this.usernameReg, password: this.passwordReg}), this.message = 'debug', this.showMessage = true
       this.message = tokenGet.data
       if(tokenGet.data) {
@@ -73,10 +85,23 @@ export default {
     login: async function(){
       this.showMessage = false
       let tokenGet
-      if(this.usernameLog == '' && this.passwordLog == '') this.message = 'Veuillez rentrer vos identifiants', this.showMessage = true
-      if(this.usernameLog !== '' && this.passwordLog == '') this.message = 'Veuillez indiquer votre mot de passe', this.showMessage = true
-      if(this.usernameLog == '' && this.passwordLog !== '') this.message = 'Veuillez renseigner votre identifiant', this.showMessage = true
+      if(this.usernameLog == '' && this.passwordLog == ''){
+        this.message = 'Veuillez rentrer vos identifiants'
+        this.showMessage = true
+        return
+      }
+      if(this.usernameLog !== '' && this.passwordLog == '') {
+        this.message = 'Veuillez indiquer votre mot de passe'
+        this.showMessage = true
+        return
+      }
+      if(this.usernameLog == '' && this.passwordLog !== '') {
+        this.message = 'Veuillez renseigner votre identifiant'
+        this.showMessage = true
+        return
+      }
       else tokenGet = await AxiosServices.instance.post('/user/login', {username: this.usernameLog, password: this.passwordLog})
+      .catch(res => this.message = res.response.data, this.showMessage = true)
       if(tokenGet.data){
         await DexieServices.addToken(tokenGet.data, this.usernameLog)
         const path = '/user/'+this.usernameLog
@@ -141,6 +166,13 @@ export default {
       cursor: pointer;
     }
   }
+}
+#message{
+  text-align: center;
+  font-size: 30px;
+  color: red;
+  font-weight: bolder;
+  margin-top: 20px;
 }
 @media screen and (min-width: 1180px) {
   #login{
